@@ -1,0 +1,78 @@
+  <template name='layout'>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Leaderboard</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="create">Create</a></li>
+              <li><a href="about">About</a></li>
+              <li><a href="contact">Contact</a></li>
+            </ul>
+            
+            <ul class="navbar-form navbar-right">
+              {{> loginButtons}}
+            </ul>
+            
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>  
+
+
+    <div class="outer">
+      <div class="logo"></div>
+        <h1 class="title">Leaderboard</h1>
+      <div class="subtitle">Select a scientist to give them points</div>
+      {{> yield }}
+    </div>
+  </template>
+
+  <template name="leaderboard">
+    <form class="new_player_form">    
+      <input class="enter_new_player" id="player_name" type="text" style='width:100%' placeholder="Enter another Player" />
+    </form>
+    <ol class="leaderboard">
+      {{#each Lists}}
+        {{> player}}
+      {{/each}}
+    </ol>
+
+    {{#if selectedName}}
+      <div class="details">
+        <button class="inc" id="remove_button">Remove 5 points</button>
+        <input type="text" id="edit_player_name" class="edit_player_name" placeholder="{{selectedName}}"/>
+        <button class="inc" id="add_button">Add 5 points</button>
+      </div>
+    {{else}}
+      <div class="message">Click a player to select</div>
+    {{/if}}
+  </template>
+
+  <template name="player">
+    <li class="player {{selected}}">
+      <span class="name">{{name}}</span>
+      <span class='trash'><i class="fa fa-trash"></i></span> 
+      <span class='score'>{{score}}</span>
+    </li>
+  </template>
+
+  <template name='about'>
+    This page has been made as a learning exersize for the purpose of learning the meteor platform. I helped a lot by Owen, Blair and Zach. The page is based on a example meteor app called Leaderboard.
+  </template>
+
+  <template name="contact">
+    Liam O'Connor - liamoconnor1247@gmail.com
+  </template>
+
+<template name="create">
+  <button id="#create_button">Create</button>
+</template>

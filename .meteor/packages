@@ -9,3 +9,10 @@ insecure
 meteor-platform
 
 linto:fontawesome
+iron:router
+coffeescript
+ian:accounts-ui-bootstrap-3
+accounts-password
+mrt:bootstrap-3
+accounts-facebook
+accounts-github
